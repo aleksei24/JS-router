@@ -1,3 +1,5 @@
+import routerInstance from './routes.js';
+
 window.onload = () => {
     let root = document.getElementById('app');
 
