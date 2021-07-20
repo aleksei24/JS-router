@@ -33,4 +33,9 @@ window.onload = () => {
             root.innerHTML = 'This route is not defined';
         }
     }
+
+    let definedRoutes = Array.from(document.querySelectorAll('[router-link]'));
+    definedRoutes.forEach((route) => {
+        route.addEventListener('click', navigate, false);
+    });
 };
