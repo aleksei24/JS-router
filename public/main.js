@@ -34,6 +34,19 @@ window.onload = () => {
         }
     }
 
+    let navigate = (e) => {
+        let route = e.target.attributes[0].value;
+
+        let routeInfo = routerInstance.routes.filter((r) => r.path === route)[0];
+        if (!routeInfo) {
+            window.history.pushState({}, '', 'error');
+            root.innerHTML = 'This route is not defined';
+        } else {
+            window.history.pushState({}, '', routeInfo.path);
+            root.innerHTML = `You're on the ${routeInfo.name} path`;
+        }
+    };
+
     let definedRoutes = Array.from(document.querySelectorAll('[router-link]'));
     definedRoutes.forEach((route) => {
         route.addEventListener('click', navigate, false);
